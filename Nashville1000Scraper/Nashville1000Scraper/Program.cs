@@ -42,31 +42,49 @@ namespace Nashville1000Scraper
                 WebDriverWait w = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
                 element.Submit();
                 Thread.Sleep(3000);
+                string restaurantName = driver.FindElement(By.ClassName("DoxwDb")).Text;
                 var informationalElements = driver.FindElements(By.ClassName("wDYxhc"));
-                var hoursTable = driver.FindElements(By.ClassName("WgFkxc"));
+                Dictionary<string, string> searchTextToValue = new Dictionary<string, string>()
+                {
+                    { Constants.AddressSearch, string.Empty },
+                    { Constants.MenuSearch, string.Empty },
+                    { Constants.PhoneSearch, string.Empty },
+                    { Constants.PricePerPerson, string.Empty },
+                };
+                List<string> buttonClassesToPress = new List<string>()
+                {
+                    Constants.MoreDescriptionButtonClass,
+                    Constants.MoreHoursButtonClass
+                };
                 foreach (var informationalElement in informationalElements)
                 {
                     string data = informationalElement.Text;
-                    if (data.StartsWith("Address: "))
+                    var match = searchTextToValue.FirstOrDefault(x => data.StartsWith(x.Key));
+                    if (match.Key == null)
                     {
-
+                        continue;
                     }
-                    else if (data.StartsWith("Phone: "))
+                    searchTextToValue[match.Key] = data.Substring(match.Key.Length);
+                }
+                foreach (var buttonClass in buttonClassesToPress)
+                {
+                    var buttonElement = driver.FindElement(By.ClassName(buttonClass));
+                    if (buttonElement != null)
                     {
-
-                    }
-                    else if (data.StartsWith("Menu: "))
-                    {
-
-                    }
-                    else if (data.StartsWith("Price per person: "))
-                    {
-
+                        buttonElement.Click();
                     }
                 }
-                foreach (var hours in hoursTable)
+                var hoursTable = driver.FindElement(By.ClassName("WgFkxc"));
+                var descriptionTextClass = driver.FindElements(By.ClassName("sATSHe"));
+                string description = string.Empty;
+                foreach (var descriptionText in descriptionTextClass)
                 {
-                    string data = hours.Text;
+                    var text = descriptionText.Text;
+                    if (text.StartsWith($"From {restaurantName}"))
+                    {
+                        text = text.Split('\n')[1];
+                        description = text.Trim('\"');
+                    }
                 }
             }
             

@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,11 +61,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Nashville1000\Nashville1000DataAccess\Nashville1000DataAccess.csproj">
+    <ProjectReference Include="..\..\Nashville1000DataAccess\Nashville1000DataAccess.csproj">
       <Project>{fc3f4790-0535-4dbc-bbe9-5f26458dc6b2}</Project>
       <Name>Nashville1000DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Nashville1000\Nashville1000Models\Nashville1000Models.csproj">
+    <ProjectReference Include="..\..\Nashville1000Models\Nashville1000Models.csproj">
       <Project>{7ad125aa-da2e-499d-9289-51d7ad7ef8f0}</Project>
       <Name>Nashville1000Models</Name>
     </ProjectReference>
