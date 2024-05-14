@@ -42,7 +42,9 @@ namespace Nashville1000Scraper
                 WebDriverWait w = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
                 element.Submit();
                 Thread.Sleep(3000);
-                string restaurantName = driver.FindElement(By.ClassName("DoxwDb")).Text;
+                string googleScore = driver.FindElement(By.ClassName(Constants.GoogleScoreClass)).Text;
+                string restaurantName = driver.FindElement(By.ClassName(Constants.RestaurantNameClass)).Text;
+                string restaurantType = driver.FindElement(By.ClassName(Constants.RestaurantTypeClass)).Text;
                 var informationalElements = driver.FindElements(By.ClassName("wDYxhc"));
                 Dictionary<string, string> searchTextToValue = new Dictionary<string, string>()
                 {
