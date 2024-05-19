@@ -18,7 +18,7 @@ namespace Nashville1000Scraper
         public const string MoreDescriptionButtonClass = "RRYiY";
         // TEXT CLASSES
         public const string GoogleScoreClass = "Aq14fc";
-        public const string RestaurantNameClass = "DoxwDB";
+        public const string RestaurantNameClass = "DoxwDb";
         public const string RestaurantTypeClass = "E5BaQ";
     }
 }

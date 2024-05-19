@@ -24,6 +24,8 @@ namespace Nashville1000Scraper
             }
         }
 
+        
+
         static void Main(string[] args)
         {
             //ReadRestaurantNamesFromFile();
@@ -32,9 +34,10 @@ namespace Nashville1000Scraper
             driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 5);
             foreach (var restaurant in restaurants)
             {
+                string searchableRestaurantName = restaurant.RestaurantName;
                 driver.Navigate().GoToUrl("https://google.com");
                 var element = driver.FindElement(By.Id("APjFqb"));
-                if (!restaurant.RestaurantName.ToLower().Contains("nashville"))
+                if (!searchableRestaurantName.ToLower().Contains("nashville"))
                 {
                     restaurant.RestaurantName += " Nashville";
                 }

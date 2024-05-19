@@ -52,6 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Restaurant\RestaurantBL.cs" />
+    <Compile Include="BusinessLogic\Scraping\GoogleRestaurantInfoScrapingBL.cs" />
+    <Compile Include="BusinessLogic\Scraping\ScrapingBase.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
